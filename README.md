@@ -60,64 +60,27 @@ To support programs that use `vfork()`, you must set the environment variable `P
 
 To run Murphy, use “`Murphy [options] <command> ...`”, where options and environment variables are:
 
-* `-c <file>`
+* `-c <file>`: Path to Murphy config file, defaulting to `$MURPHY_CONFIG`.
+* `-g <file>`: Send gremlin activation log to this file.
+* `-r <file>`: Replay a gremlin activation log from this file.
+* `-a`: Attach with `gdb` when replay of a gremlin activation log completes.
+* `-d <name>`: Enable debugging for the named sub-system.
+* `-H`: Disable use of helper library.
+* `-h`: Show brief help information.
+* `-l <path>`: Path to `ld.so` to use.
+* `-o <file>`: Send debugging messages to this file, defaulting to `stderr`.
+* `-O <bytes>`: Rotate debug files of this size.
 
-    Path to Murphy config file, defaulting to `$MURPHY_CONFIG`.
-
-* `-g <file>`
-
-    Send gremlin activation log to this file.
-
-* `-r <file>`
-
-    Replay a gremlin activation log from this file.
-
-* `-a`
-
-    Attach with `gdb` when replay of a gremlin activation log completes.
-
-* `-d <name>`
-
-    Enable debugging for the named sub-system, one of: `syscall`, `notice`, `process`, `pstree`, `alloc`, `cache`, `poll`, `debug`, `murphy`, `user`, `all`, `time`, and `pid`.
-
-    The most useful ones for Murphy are “`-d murphy`” and “`-d syscall`”.
-
-* `-H`
-
-    Disable use of helper library.
-
-* `-h`
-
-    Show brief help information.
-
-* `-l <path>`
-
-    Path to `ld.so` to use.
-
-* `-o <file>`
-
-    Send debugging messages to this file, defaulting to `stderr`.
-
-* `-O <bytes>`
-
-    Rotate debug files of this size.
+Debuggable subsystems for use with the `-d` flag are: `syscall`, `notice`, `process`, `pstree`, `alloc`, `cache`, `poll`, `debug`, `murphy`, `user`, `all`, `time`, and `pid`.  The most useful ones for Murphy are “`-d murphy`” and “`-d syscall`”.
 
 ### Run-Time Steering ###
 
 The Murphy run-time control function is `mkdir()`.  Four commands are currently implemented:
 
-* `mkdir /Murphy/set-metadata/<MeTaDaTa>`
+* `mkdir /Murphy/set-metadata/<MeTaDaTa>`: Set the per-process metadata to the string “`<MeTaDaTa>`”.  The string is limited to 1000 characters, but any non-null character is legal.
 
-    Set the per-process metadata to the string “`<MeTaDaTa>`”.  The string is limited to 1000 characters, but any non-null character is legal.
+* `mkdir /Murphy/update-config/<config-entry>`: Dynamically set a new config entry, using the same format that is used in the `murphy_config` file.
 
-* `mkdir /Murphy/update-config/<config-entry>`
+* `mkdir /Murphy/suspend`: Suspend your program and detach Murphy.  You are now free to attach with your own debugger, send it `SIGCONT` to continue, kill it, etc.  Don’t forget to clean it up or it will lurk forever.
 
-    Dynamically set a new config entry, using the same format that is used in the `murphy_config` file.
-
-* `mkdir /Murphy/suspend`
-
-    Suspend your program and detach Murphy.  You are now free to attach with your own debugger, send it `SIGCONT` to continue, kill it, etc.  Don’t forget to clean it up or it will lurk forever.
-
-* `mkdir /Murphy/suspend-and-debug`
-
-    Detach `Murphy` from the program under test, then reattach to it with `gdb`.  This is useful for most people and allows you to inspect data, get a stack trace, etc. 
+* `mkdir /Murphy/suspend-and-debug`: Detach `Murphy` from the program under test, then reattach to it with `gdb`.  This is useful for most people and allows you to inspect data, get a stack trace, etc.
