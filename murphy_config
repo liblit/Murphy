@@ -1,0 +1,8 @@
+## single byte read (with state)
+## this regex allows shared libraries to load
+readone_s:100:0:!regexp("(\\.so(\\.[0-9]+)*)$", Name, "")
+
+
+## single byte write (with state)
+writeone_s:100
+

@@ -1,0 +1,32 @@
+## single byte read
+## this regex allows shared libraries to load
+#readone:100:0:!regexp("(\\.so(\\.[0-9]+)*)$", Name, "")
+#readone_s:100:0:!regexp("(\\.so(\\.[0-9]+)*)$", Name, "")
+#readless:100:0:!regexp("(\\.so(\\.[0-9]+)*)$", Name, "")
+
+## single byte write
+#writeone:100
+#writeone_s:100
+
+## do nothing on write!
+#writezero:50
+
+## pretend current dir is really long
+#cwdlongpath:100
+
+## allowed on many syscalls, but often fatal
+#eintr:50
+#eagain:50
+
+## these potentially add delays to any system call
+#sleepy1000th:27
+#sleepy100th:9
+#sleepy10th:3
+#sleepy1:1
+
+## this simulates /tmp being full
+#enospc:100:0:((O_CREAT =!= false) && regexp("^\\/tmp($||\\/)", Name, ""))
+
+## warning: these exist but are largely untested
+#closefail:100
+#selectfdset:100

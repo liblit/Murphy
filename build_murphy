@@ -1,0 +1,12 @@
+#!/bin/sh -e
+echo -e "\n\nBUILDING CLASSADS...\n\n"
+cd classads-1.0.10
+./configure --enable-namespace --prefix=`pwd`/..  CC=g++
+make install
+cd ..
+echo -e "\n\nBUILDING MURPHY...\n\n"
+cd murphy-1.0
+./configure 
+make
+cp parrot/src/Murphy ../.
+echo "Murphy should be in current subdirectory."
