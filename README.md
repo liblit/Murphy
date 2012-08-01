@@ -1,25 +1,16 @@
+
 Murphy v1.0
 ===========
 
-Written by:
-
-* [Zach Miller](mailto:zmiller@cs.wisc.edu)
-* [Todd Tannenbaum](mailto:tannenba@cs.wisc.edu)
-* with help from [Ben Liblit](mailto:liblit@cs.wisc.edu)
-
-Please contacts us with questions or comments!
+Written by [Zach Miller](mailto:zmiller@cs.wisc.edu) and [Todd Tannenbaum](mailto:tannenba@cs.wisc.edu), with help from [Ben Liblit](mailto:liblit@cs.wisc.edu).  Please contacts us with questions or comments!
 
 
 Subdirectories and Licenses
 ---------------------------
 
-* `classads-1.0.10`
+* `classads-1.0.10`: This is the ClassAd Library source, used as the policy language in Murphy.  Distributed via the Apache 2.0 License from <http://research.cs.wisc.edu/condor/classad/>.
 
-    This is the ClassAd Library source, used as the policy language in Murphy.  Distributed via the Apache 2.0 License from <http://research.cs.wisc.edu/condor/classad/>.
-
-* `murphy-1.0`
-
-    This is the Murphy source code, implemented as a derivative work of the Parrot tool included as part of the Cooperative Computing Tools (cctools).  cctools is released under the GPL v2 License from <http://nd.edu/~ccl/software/>.
+* `murphy-1.0`: This is the Murphy source code, implemented as a derivative work of the Parrot tool included as part of the Cooperative Computing Tools (cctools).  cctools is released under the GPL v2 License from <http://nd.edu/~ccl/software/>.
 
 
 To Build
