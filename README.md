@@ -130,8 +130,3 @@ The Murphy run-time control function is `mkdir()`.  Four commands are currently 
 * `mkdir /Murphy/suspend-and-debug`
 
     Detach `Murphy` from the program under test, then reattach to it with `gdb`.  This is useful for most people and allows you to inspect data, get a stack trace, etc. 
-
-; LocalWords:  murphy cctools v2 CONFIG config readone readless
-; LocalWords:  writeone writezero eintr eagain enospc closefail
-; LocalWords:  selectfdset classad isn libparrot syscall pstree alloc
-; LocalWords:  pid ld MeTaDaTa v1
