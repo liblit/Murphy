@@ -1,8 +1,9 @@
-
 Murphy v1.0
 ===========
 
 Written by [Zach Miller](mailto:zmiller@cs.wisc.edu) and [Todd Tannenbaum](mailto:tannenba@cs.wisc.edu), with help from [Ben Liblit](mailto:liblit@cs.wisc.edu).  Please contacts us with questions or comments!
+
+See also the [Murphy Project Page](http://pages.cs.wisc.edu/~liblit/atc-2012/) for more material, including research papers about how Murphy was created and some of the scary bugs it has found.
 
 
 Subdirectories and Licenses
